@@ -24,7 +24,7 @@ export const fetchFakeApi = () => {
             ]
           },
           {
-            name: 'bay12',
+            name: '',
             country: 'CANA',
             id: 'fixtures',
             food: [
@@ -67,7 +67,6 @@ export const fetchFakeApi = () => {
             ]
           },
           {
-            name: 'pp',
             country: 'USAaaa',
             id: 'others',
             age: null,
