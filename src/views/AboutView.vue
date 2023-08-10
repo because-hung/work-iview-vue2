@@ -68,10 +68,10 @@ export default {
         const context = canvas.getContext('2d')
 
         // 绘制第一张图片
-        context.drawImage(image1, 0, 0, 420, 315, 0, 0, 420, 315)
+        context.drawImage(image1, 0, 0, 420, 315)
 
         // 绘制第二张图片
-        context.drawImage(image2, 0, 0, 120, 120, 150, 98, 120, 120)
+        context.drawImage(image2, 150, 98, 120, 120)
 
         // 将 canvas 转换为图片文件
         canvas.toBlob(blob => {
