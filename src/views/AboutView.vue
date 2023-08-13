@@ -74,6 +74,10 @@ export default {
         canvas.style.width = 420 + 'px'
         canvas.style.height = 315 + 'px'
         const context = canvas.getContext('2d')
+        context.mozImageSmoothingEnabled = false
+        context.webkitImageSmoothingEnabled = false
+        context.msImageSmoothingEnabled = false
+        context.imageSmoothingEnabled = false
         // Set actual size in memory (scaled to account for extra pixel density).
         const devicePixelRatio = window.devicePixelRatio || 1 // 乘像素比解決模糊 app
         const backingStoreRatio = context.webkitBackingStorePixelRatio ||
@@ -194,13 +198,13 @@ export default {
   margin: 0 auto;
   width: 420px;
   height: 315px;
-  background-image: url("../assets/sea3.jpg");
+  background-image: url("../assets/sea300.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
-#img3{
-  display: none;
-}
+// #img3{
+//   display: none;
+// }
 // canvas{
 //   transform: scale(0.5 , 0.5);
 //   transform-origin: top left;
