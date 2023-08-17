@@ -6,8 +6,25 @@
     <h2>redPacket: {{ redPacket }}</h2>
     <h2 v-if="app || redPacket">len: {{ maxLen }}</h2>
     <button @click="download()">click me</button>
+    <DatePicker v-model="date" type="datetimerange" placement="bottom-end" placeholder="Select date" style="width: 320px" @on-change="isDuringDate()" />
+    <div class="testInput">
+     <span>第一個</span>
+     <span>數值:</span>
+     <Input placeholder="Enter something..." style="width: 300px" /> ~
+     <Input placeholder="Enter something..." style="width: 300px" />
+     <span>獎金:</span>
+     <Input placeholder="Enter something..." style="width: 300px" />
+    </div>
+    <div class="testInput">
+     <span>第一個</span>
+     <span>數值:</span>
+     <input placeholder="Enter something..." style="width: 300px" /> ~
+     <input placeholder="Enter something..." style="width: 300px" />
+     <span>獎金:</span>
+     <input placeholder="Enter something..." style="width: 300px" />
+    </div>
     <div>
-      <Table :columns='columns' :data='deta'></Table>
+      <!-- <Table :columns='columns' :data='deta'></Table> -->
     </div>
     <img id="fish" src="../assets/fish.jpg" style="width: 120px; height:120px" alt="">
     <img id="sea" src="../assets/sea3.jpg" style="width: 420px; height: 315px" alt="">
@@ -31,6 +48,7 @@ export default {
       app: 0,
       redPacket: 0,
       flag: 0,
+      date: [null, null],
       columns: [
         {
           title: 'Name',
@@ -171,6 +189,18 @@ export default {
         this.app = 0
         this.redPacket = 0
       }
+    },
+    isDuringDate (beginDateStr, endDateStr) {
+      const curDate = new Date()
+      const beginDate = new Date(beginDateStr)
+      const endDate = new Date(endDateStr)
+      if (curDate >= beginDate && curDate <= endDate) {
+        console.log('進行中')
+      } else if (curDate < beginDate) {
+        console.log('還沒開始')
+      } else {
+        console.log('過期')
+      }
     }
   },
   computed: {
@@ -190,6 +220,10 @@ export default {
   mounted () {
     this.getData()
     this.getNum()
+    const str = '<p>123</p>555<img/>6666<br/><p class="dd"></p>'
+    const res = str.replace(/<[^>]+>/g, '')
+    console.log(res)
+    this.isDuringDate('2023-08-17 05:12:05', '2023-08-17 15:16:09')
   }
 }
 </script>
@@ -209,4 +243,15 @@ export default {
 //   transform: scale(0.5 , 0.5);
 //   transform-origin: top left;
 // }
+.testInput{
+  margin: 50px 0;
+  input{
+    height: 60px;
+  }
+  span{
+    margin: 10px;
+    font-size: 16px;
+    vertical-align: middle;
+  }
+}
 </style>
