@@ -5,7 +5,16 @@
     <h2>app: {{ app }}</h2>
     <h2>redPacket: {{ redPacket }}</h2>
     <h2 v-if="app || redPacket">len: {{ maxLen }}</h2>
-    <button @click="download()">click me</button>
+    <button @click="download()">click me</button><br>
+    <div class="st">
+    <span class="star">*</span>
+    <input class="valid" type="text" v-model="ary" style="margin: 10px">
+    <br>
+    <span style="color: red; margin-bottom: 10px">{{ validText }}</span>
+  </div>
+    <br>
+    <button @click="valid()">valid</button>
+    <br>
     <DatePicker v-model="date" type="datetimerange" placement="bottom-end" placeholder="Select date" style="width: 320px" @on-change="isDuringDate()" />
     <div class="testInput">
      <span>第一個</span>
@@ -44,9 +53,11 @@ export default {
   name: 'HomeView',
   data () {
     return {
+      ary: '',
       deta: [],
       app: 0,
       redPacket: 0,
+      valided: false,
       flag: 0,
       date: [null, null],
       columns: [
@@ -201,9 +212,21 @@ export default {
       } else {
         console.log('過期')
       }
+    },
+    valid () {
+      this.valided = true
     }
   },
   computed: {
+    validText () {
+      let txt = ''
+      if (this.ary.length > 5 && this.valided) {
+        txt = 'not pass'
+      } else {
+        txt = ''
+      }
+      return txt
+    },
     maxLen () {
       let len
       if (this.app) {
@@ -253,5 +276,14 @@ export default {
     font-size: 16px;
     vertical-align: middle;
   }
+}
+.st{
+  position: relative;
+}
+.star{
+  color: red;
+  font-size: 20px;
+  display: inline-block;
+  transform: translateY(2px)
 }
 </style>
