@@ -7,9 +7,10 @@
       class="img"
       :key="v"
       :style="{
-        left: `${getRandom(1, maxLeft-50)}px`,
+        left: `${getRandom(1, maxLeft - 40)}px`,  // -15
         top: `${getRandom(1, maxTop)}px`,
-        animationDuration: `${getRandom(2, 8)}s`,
+        animationDuration: `${Math.random() * 3 + 2}s`,
+        // animationDuration: `${getRandom(2, 8)}s`,
     }"
   />
 </div>
