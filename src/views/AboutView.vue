@@ -5,6 +5,7 @@
     <h2>app: {{ app }}</h2>
     <h2>redPacket: {{ redPacket }}</h2>
     <h2 v-if="app || redPacket">len: {{ maxLen }}</h2>
+    <h2 @click="goRed()">to red</h2>
     <button @click="download()">click me</button><br>
     <div class="st">
     <span class="star">*</span>
@@ -81,6 +82,9 @@ export default {
     }
   },
   methods: {
+    goRed () {
+      this.$router.push('/red')
+    },
     download () {
       // 创建两个 Image 对象，分别表示两张图片
       const image1 = new Image()
