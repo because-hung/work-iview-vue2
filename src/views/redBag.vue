@@ -27,6 +27,10 @@ export default {
     }
   },
   methods: {
+    loadData () {
+    // 在加载数据之前导航到Loading页
+      this.$router.push({ name: 'maskPage' })
+    },
     getRandom (min, max) {
       return Math.round(Math.random() * (max - min) + min)
     }
@@ -35,6 +39,7 @@ export default {
     this.maxTop = document.body.clientHeight
     this.maxLeft = document.body.clientWidth
     this.redEnvelopeList = Array.from(new Array(20))
+    // this.loadData()
   }
 }
 </script>

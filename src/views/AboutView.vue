@@ -36,15 +36,15 @@
     <div>
       <!-- <Table :columns='columns' :data='deta'></Table> -->
     </div>
-    <img id="fish" src="../assets/fish.jpg" style="width: 120px; height:120px" alt="">
-    <img id="sea" src="../assets/sea3.jpg" style="width: 420px; height: 315px" alt="">
+    <img id="fish" :src="null" style="width: 120px; height:120px" alt="123">5555
+    <img id="sea" :src="null" style="width: 420px; height: 315px;text-indent: -9999px" alt="1" >
     <h2>canvas</h2>
     <canvas width="420" height="315"></canvas>
     <h2>background</h2>
     <div class="bgImg"></div>
     <h2>img 3</h2>
     <div>
-      <img width="420" height="315" src="" alt="" id="img3">
+      <img  src="" alt="" id="img3">
     </div>
   </div>
 </template>
