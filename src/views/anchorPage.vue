@@ -1,10 +1,11 @@
 <template>
   <div class="container">
     <div class="list">
-      <div class="item" :id="item.id" v-for="(item, i) in Ilist" :key="i">{{ item.id }}</div>
+      <div :class="{ longHeight: long && (Number(item.id) % 2) }" class="item" :id="item.id" v-for="(item, i) in Ilist" :key="i">{{ item.id }}</div>
     </div>
     <div class="menu">
       <a class="anchor" :id="item.id" v-for="(item, i) in Ilist" :key="i" :href="`#${item.id}`">item {{ item.id }}</a>
+      <button @click="changeH()">click</button>
     </div>
   </div>
 </template>
@@ -13,6 +14,7 @@ export default {
   data () {
     return {
       topList: [],
+      long: false,
       Ilist: [
         {
           id: 1,
@@ -42,27 +44,25 @@ export default {
     }
   },
   methods: {
-    getTop () {
-      const list = document.querySelectorAll('.item')
-      list.forEach(it => {
-        const t = it.getBoundingClientRect()
-        this.topList.push(t.top)
-      })
-      console.log('tt', this.topList)
-      console.log('l1', list[0].getBoundingClientRect())
-      console.log('l2', list[1].getBoundingClientRect())
+    changeH () {
+      this.long = !this.long
+      this.getTop(true)
     },
     getAnchor () {
-      const that = this
       window.onscroll = function () {
-      // scrollTop就是触发滚轮事件时滚轮的高度
+        const topList = []
+        const list = document.querySelectorAll('.item')
+        list.forEach(it => {
+          topList.push(it.offsetTop)
+        })
+        // scrollTop就是触发滚轮事件时滚轮的高度
         var scrollTop =
           document.documentElement.scrollTop || document.body.scrollTop
         console.log('滚动距离' + scrollTop)
         const anchorList = document.querySelectorAll('.anchor')
-        console.log('l', this.topList)
-        console.log('l2', that.topList)
-        let i = that.topList.findIndex((it) => {
+        // console.log('l', this.topList)
+        console.log('tt1', topList)
+        let i = topList.findIndex((it) => {
           return scrollTop < it
         })
         anchorList.forEach((item) => {
@@ -70,14 +70,14 @@ export default {
         })
         console.log('d', i)
         if (Number(i) === -1) {
-          i = 0
+          i = topList.length - 1
         }
+        // 給高亮
         anchorList[i].classList.add('active')
       }
     }
   },
   mounted () {
-    this.getTop()
     this.getAnchor()
   }
 }
@@ -99,6 +99,10 @@ export default {
   width: 500px;
   margin-bottom: 20px;
   padding: 20px;
+  &.longHeight{
+    height: 1000px;
+    background-color: red;
+  }
 }
 
 .menu {
