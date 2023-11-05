@@ -46,7 +46,7 @@ export default {
   methods: {
     changeH () {
       this.long = !this.long
-      this.getTop(true)
+      this.getAnchor()
     },
     getAnchor () {
       window.onscroll = function () {
