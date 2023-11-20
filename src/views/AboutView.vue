@@ -1,5 +1,9 @@
 <template>
   <div class='about'>
+    <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
+      <van-swipe-item><img :src="images[0]" /></van-swipe-item>
+      <van-swipe-item><img :src="images[1]" /></van-swipe-item>
+    </van-swipe>
     <h1>This is an about page</h1>
     <h2>flag: {{ flag }}</h2>
     <h2>app: {{ app }}</h2>
@@ -54,6 +58,10 @@ export default {
   name: 'HomeView',
   data () {
     return {
+      images: [
+        'https://img01.yzcdn.cn/vant/apple-1.jpg',
+        'https://img01.yzcdn.cn/vant/apple-2.jpg'
+      ],
       ary: '',
       deta: [],
       app: 0,

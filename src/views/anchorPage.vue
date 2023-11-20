@@ -56,7 +56,7 @@ export default {
           topList.push(it.offsetTop)
         })
         // scrollTop就是触发滚轮事件时滚轮的高度
-        var scrollTop =
+        const scrollTop =
           document.documentElement.scrollTop || document.body.scrollTop
         console.log('滚动距离' + scrollTop)
         const anchorList = document.querySelectorAll('.anchor')
