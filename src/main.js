@@ -4,10 +4,10 @@ import router from './router'
 import store from './store'
 import iView from 'iview'
 import 'iview/dist/styles/iview.css'
-import { Swipe, SwipeItem } from 'vant'
+import Vant from 'vant'
+import 'vant/lib/index.css'
 
-Vue.use(Swipe)
-Vue.use(SwipeItem)
+Vue.use(Vant)
 
 Vue.use(iView)
 
