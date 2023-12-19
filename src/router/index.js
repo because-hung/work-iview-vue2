@@ -4,6 +4,7 @@ import HomeView from '../views/HomeView.vue'
 import redBag from '../views/redBag.vue'
 import maskPage from '../views/maskPage.vue'
 import anchor from '../views/anchorPage.vue'
+import anchor2 from '../views/anchorPage2.vue'
 import vantTest from '../views/vantTest.vue'
 import vantSw from '../views/vantSwiper.vue'
 
@@ -46,6 +47,14 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: anchor
+  },
+  {
+    path: '/anchor2',
+    name: 'anchor2',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: anchor2
   },
   {
     path: '/maskPage',

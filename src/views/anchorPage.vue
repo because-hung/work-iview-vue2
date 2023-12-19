@@ -46,7 +46,7 @@ export default {
   methods: {
     changeH () {
       this.long = !this.long
-      this.getAnchor()
+      // this.getAnchor()
     },
     getAnchor () {
       window.onscroll = function () {
@@ -78,7 +78,7 @@ export default {
     }
   },
   mounted () {
-    this.getAnchor()
+    // this.getAnchor()
   }
 }
 </script>

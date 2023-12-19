@@ -6,6 +6,9 @@ import iView from 'iview'
 import 'iview/dist/styles/iview.css'
 import Vant from 'vant'
 import 'vant/lib/index.css'
+import Scrollspy from 'vue2-scrollspy'
+// use default options
+Vue.use(Scrollspy)
 
 Vue.use(Vant)
 
