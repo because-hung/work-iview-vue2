@@ -7,6 +7,7 @@ import anchor from '../views/anchorPage.vue'
 import anchor2 from '../views/anchorPage2.vue'
 import vantTest from '../views/vantTest.vue'
 import vantSw from '../views/vantSwiper.vue'
+import phone from '../views/phoneNumber.vue'
 
 Vue.use(VueRouter)
 
@@ -79,6 +80,14 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: vantSw
+  },
+  {
+    path: '/phone',
+    name: 'phone',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: phone
   }
 ]
 
