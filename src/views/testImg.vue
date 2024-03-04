@@ -1,5 +1,21 @@
 <template>
   <div>
+    <div>
+  <ul id="liMenu">
+    <li class="liItem">1</li>
+    <li class="liItem">2</li>
+    <li class="liItem">3</li>
+    <li class="liItem">4</li>
+    <li class="liItem">5</li>
+    <li class="liItem">6</li>
+    <li class="liItem">7</li>
+    <li class="liItem">8</li>
+    <li class="liItem">9</li>
+  </ul>
+  <button @click="getBox()">click</button>
+  <br>
+  <button @click="scrollB()">scroll</button>
+</div>
     <h2>TG regex</h2>
     <p>
       title
@@ -17,6 +33,25 @@
   </div>
 </template>
 <style lang="scss" scoped>
+div {
+  overflow-y: hidden;
+  /*debug only*/
+  border: 1px solid red;
+}
+ul {
+  white-space: nowrap;
+  overflow-x: auto;
+  /* added width so it would work in the snippet */
+  width: 500px;
+   /*debug only*/
+  border: 1px solid green;
+
+}
+li {
+  width: 120px;
+  display: inline-block;
+  padding: 20px;
+}
 p{
   width: 1200px;
   height: 250px;
@@ -121,6 +156,20 @@ export default {
       const reg1 = /(?:t\.me)/
       console.log('res1', reg1.test(this.url))
       console.log('res2', reg1.test(this.url2))
+    },
+    getBox () {
+      const all = document.querySelectorAll('.liItem')
+      const data = [...all]
+      console.log('0', data[0].getBoundingClientRect())
+      console.log('5', data[5].getBoundingClientRect())
+      console.log('8', data[8].getBoundingClientRect())
+    },
+    scrollB () {
+      const tab = document.getElementById('liMenu')
+      const all = document.querySelectorAll('.liItem')
+      const data = [...all]
+      const w = data[4].getBoundingClientRect().left / 2
+      tab.scrollTo(w, 0)
     }
   },
   mounted () {
