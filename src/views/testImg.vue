@@ -1,7 +1,13 @@
 <template>
   <div>
     <div>
-  <ul id="liMenu">
+      <p class="testBox">test box
+        <span v-if="showText">123132</span>
+      </p>
+      <button @click="showText = !showText">change</button>
+      <br>
+      <button @click="addBox()">add</button>
+  <!-- <ul id="liMenu">
     <li class="liItem">1</li>
     <li class="liItem">2</li>
     <li class="liItem">3</li>
@@ -11,10 +17,10 @@
     <li class="liItem">7</li>
     <li class="liItem">8</li>
     <li class="liItem">9</li>
-  </ul>
-  <button @click="getBox()">click</button>
+  </ul> -->
+  <!-- <button @click="getBox()">click</button>
   <br>
-  <button @click="scrollB()">scroll</button>
+  <button @click="scrollB()">scroll</button> -->
 </div>
     <h2>TG regex</h2>
     <p>
@@ -33,6 +39,11 @@
   </div>
 </template>
 <style lang="scss" scoped>
+.testBox{
+  width: 40px;
+  height: 40px;
+  border: 1px solid blue;
+}
 div {
   overflow-y: hidden;
   /*debug only*/
@@ -81,6 +92,7 @@ export default {
   name: 'testImg',
   data () {
     return {
+      showText: false,
       data: [
         {
           name: 'A',
@@ -152,6 +164,14 @@ export default {
     }
   },
   methods: {
+    addBox () {
+      const tDom = document.querySelector('.testBox')
+      // tDom.addEventListener('DOMNodeInserted', function (e) {
+      //   console.log('change', e)
+      // }, false)
+      tDom.style.width = '60px'
+      tDom.style.height = '60px'
+    },
     regexTG () {
       const reg1 = /(?:t\.me)/
       console.log('res1', reg1.test(this.url))
@@ -168,12 +188,26 @@ export default {
       const tab = document.getElementById('liMenu')
       const all = document.querySelectorAll('.liItem')
       const data = [...all]
-      const w = data[4].getBoundingClientRect().left / 2
+      const w = data[4].getBoundingClientRect().left / 2 - 50
       tab.scrollTo(w, 0)
     }
   },
   mounted () {
     this.regexTG()
+    const tDom = document.querySelector('.testBox')
+    // tDom.addEventListener('DOMNodeInserted', function (e) {
+    //   console.log('change', e)
+    // }, false)
+    const MutationObserver = window.MutationObserver || window.webkitMutationObserver || window.MozMutationObserver
+    const observer = new MutationObserver(function () {
+      console.log('change')
+    })
+    observer.observe(tDom, {
+      childList: true, // 子节点的变动（新增、删除或者更改）
+      attributes: true // 属性的变动
+      // characterData: true, // 节点内容或节点文本的变动
+      // subtree: true // 是否将观察器应用于该节点的所有后代节点
+    })
   }
 }
 </script>
