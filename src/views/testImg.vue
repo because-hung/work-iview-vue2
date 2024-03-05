@@ -201,6 +201,7 @@ export default {
     const MutationObserver = window.MutationObserver || window.webkitMutationObserver || window.MozMutationObserver
     const observer = new MutationObserver(function () {
       console.log('change')
+      observer.disconnect()
     })
     observer.observe(tDom, {
       childList: true, // 子节点的变动（新增、删除或者更改）
