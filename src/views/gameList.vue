@@ -1,7 +1,7 @@
 <template>
   <div class="container">
    <ul>
-    <li></li>
+    <li>123</li>
    </ul>
   </div>
 </template>

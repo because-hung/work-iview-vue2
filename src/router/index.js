@@ -102,11 +102,17 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if (to.name === 'redBag') {
-    router.replace('/maskPage')
-    setTimeout(() => {
-      next()
-    }, 3000)
+  // if (to.name === 'redBag') {
+  //   router.replace('/maskPage')
+  //   setTimeout(() => {
+  //     next()
+  //   }, 3000)
+  // } else {
+  //   next()
+  // }
+  if (to.name === 'testImg') {
+    router.go(-1)
+    next(from.fullPath)
   } else {
     next()
   }

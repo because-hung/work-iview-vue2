@@ -88,6 +88,7 @@ p:has( > img){
 
 </style>
 <script>
+// import router from '@/router'
 export default {
   name: 'testImg',
   data () {
@@ -210,5 +211,14 @@ export default {
       // subtree: true // 是否将观察器应用于该节点的所有后代节点
     })
   }
+  // beforeRouteEnter (to, from, next) {
+  //   console.log('in router')
+  //   if (String(to.name) === 'testImg') {
+  //     router.go(-1)
+  //     next(from.fullPath)
+  //   } else {
+  //     next()
+  //   }
+  // }
 }
 </script>
