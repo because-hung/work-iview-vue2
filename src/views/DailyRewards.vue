@@ -6,8 +6,9 @@
     <p style="margin-top: 30px;">day - {{ dailyList[num].day }}</p>
     <p>amount - {{ dailyList[num].amount }}</p>
     <p style="margin-top: 30px;">math for - {{ mathAmount }}</p>
+    <p style="margin-top: 30px;">需要達成 - {{ dailyList[memberData.signDays].limit }}</p>
     <button @click="addDay()">增加 day</button>
-    <button @click="getAmount()" style="margin-top: 400px;">領取 amount</button>
+    <button @click="getAmount()" style="margin-top: 500px;">領取 amount</button>
   </div>
 </template>
 <script>
@@ -22,31 +23,38 @@ export default {
       dailyList: [
         {
           day: 1,
-          amount: 100
+          amount: 100,
+          limit: 10
         },
         {
           day: 2,
-          amount: 200
+          amount: 200,
+          limit: 20
         },
         {
           day: 3,
-          amount: 300
+          amount: 300,
+          limit: 30
         },
         {
           day: 4,
-          amount: 400
+          amount: 400,
+          limit: 40
         },
         {
           day: 5,
-          amount: 500
+          amount: 500,
+          limit: 50
         },
         {
           day: 6,
-          amount: 600
+          amount: 600,
+          limit: 60
         },
         {
           day: 7,
-          amount: 700
+          amount: 700,
+          limit: 70
         }
       ]
     }
@@ -60,6 +68,20 @@ export default {
       this.mathAmount = this.dailyList[cnum].amount
       console.log('Amount', this.mathAmount)
       console.log('cnum', cnum)
+    },
+    getTime () {
+      // A
+      // const dayNow = new Date().toISOString().split('T')[0]
+      // const markDate = new Date('2024-05-22').toISOString().split('T')[0]
+      // console.log('Date ->', markDate)
+      // console.log('same? ->', dayNow === markDate)
+
+      // B
+      const dateNow = new Date().toISOString().split('T')[0]
+      const dayNow = Date.parse(new Date(dateNow))
+      const markDate = Date.parse(new Date('2024-05-22'))
+      const diffDay = Math.abs((markDate - dayNow) / 1000 / 60 / 60 / 24)
+      console.log('diff', Number(diffDay) === 0)
     }
   },
   computed: {
@@ -74,6 +96,7 @@ export default {
     }
   },
   mounted () {
+    this.getTime()
   }
 }
 </script>
@@ -85,7 +108,7 @@ export default {
   flex-direction: column;
   align-items: center;
   button{
-    margin-top: 300px;
+    margin-top: 400px;
     width: 50px;
     height: 50px;
     color: gray;
