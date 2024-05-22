@@ -9,6 +9,7 @@ import vantTest from '../views/vantTest.vue'
 import vantSw from '../views/vantSwiper.vue'
 import phone from '../views/phoneNumber.vue'
 import testImg from '../views/testImg.vue'
+import daily from '../views/DailyRewards.vue'
 
 Vue.use(VueRouter)
 
@@ -30,6 +31,17 @@ const routes = [
     path: '/testImg',
     name: 'testImg',
     component: testImg
+    // beforeEnter: (to, from, next) => {
+    //   if (to.name) {
+    //     // 如果用户已登录，允许进入路由
+    //     return false
+    //   }
+    // }
+  },
+  {
+    path: '/daily',
+    name: 'daily',
+    component: daily
   },
   {
     path: '/gamelist',
@@ -110,12 +122,12 @@ router.beforeEach((to, from, next) => {
   // } else {
   //   next()
   // }
-  if (to.name === 'testImg') {
-    router.go(-1)
-    next(from.fullPath)
-  } else {
-    next()
-  }
+  // if (to.name === 'testImg') {
+  //   return false
+  // } else {
+  // next()
+  // }
+  next()
   console.log('to', to)
   console.log('from', from)
   console.log('next', next)

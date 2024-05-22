@@ -212,10 +212,17 @@ export default {
     })
   }
   // beforeRouteEnter (to, from, next) {
-  //   console.log('in router')
-  //   if (String(to.name) === 'testImg') {
-  //     router.go(-1)
-  //     next(from.fullPath)
+  //   console.log('in router', from.fullPath, router)
+  //   if (to.name) {
+  //     next(vm => {
+  //       // 在这个回调函数中，我们可以访问组件实例
+  //       // 我们可以监听浏览器的 popstate 事件，以便用户点击浏览器返回按钮时触发逻辑
+  //       window.addEventListener('popstate', () => {
+  //         // 在这里可以进行需要的处理，比如重新导航到其他页面
+  //         router.replace(from.path)
+  //       })
+  //       return
+  //     })
   //   } else {
   //     next()
   //   }

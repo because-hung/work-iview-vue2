@@ -3,11 +3,32 @@
     <nav>
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> |
-      <button @click="$router.go(-1)">back</button>
+      <button @click="$router.go(-1)">back</button>|
+      <br>
+      <button @click="$router.push('/testImg')">testImg</button>
     </nav>
     <router-view/>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'App',
+  data () {
+    return {
+    }
+  },
+  watch: {
+    $route (to, from) {
+      console.log('toW', to)
+      console.log('fromW', from)
+      if (to.name === 'testImg') {
+        window.history.go(-1)
+      }
+    }
+  }
+}
+</script>
 
 <style lang="scss">
 #app {
