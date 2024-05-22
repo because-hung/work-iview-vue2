@@ -6,7 +6,8 @@
     <p style="margin-top: 30px;">day - {{ dailyList[num].day }}</p>
     <p>amount - {{ dailyList[num].amount }}</p>
     <p style="margin-top: 30px;">math for - {{ mathAmount }}</p>
-    <button @click="addDay()">增加</button>
+    <button @click="addDay()">增加 day</button>
+    <button @click="getAmount()" style="margin-top: 400px;">領取 amount</button>
   </div>
 </template>
 <script>
@@ -52,10 +53,12 @@ export default {
   },
   methods: {
     addDay () {
+      this.memberData.signDays += 1
+    },
+    getAmount () {
       const cnum = this.memberData.signDays % 7
       this.mathAmount = this.dailyList[cnum].amount
-      console.log('6', this.mathAmount)
-      this.memberData.signDays += 1
+      console.log('Amount', this.mathAmount)
       console.log('cnum', cnum)
     }
   },
