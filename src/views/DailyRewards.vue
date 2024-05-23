@@ -149,6 +149,37 @@ export default {
     console.log('str', str)
     console.log('newAry', newAry)
   }
+  //   //
+  //   // 获取 TinyMCE 编辑器实例
+  // var editor = tinymce.get('your_editor_id');
+
+  // // 监听编辑器的输入事件
+  // editor.on('input', function() {
+  //     // 获取编辑器中的内容
+  //     var content = editor.getContent();
+
+  //     // 将内容中的 Emoji 转换为 Unicode 编码点
+  //     var convertedContent = convertEmojisToUnicode(content);
+
+  //     // 更新编辑器中的内容为转换后的内容
+  //     editor.setContent(convertedContent);
+  // });
+
+  // // 将 Emoji 转换为 Unicode 编码点
+  // function convertEmojisToUnicode(content) {
+  //     // 这只是一个简单的示例，你可能需要更复杂的逻辑来确保准确地转换 Emoji
+  //     // 这里只是一个示例，用正则表达式匹配 Emoji
+  //     var regex = /[\u{1F300}-\u{1F5FF}\u{1F600}-\u{1F64F}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{1F1E6}-\u{1F1FF}]/ug;
+  //     return content.replace(regex, function(emoji) {
+  //         return emojiToUnicode(emoji);
+  //     });
+  // }
+
+  // // 将 Emoji 转换为 Unicode 编码点
+  // function emojiToUnicode(emoji) {
+  //     var codePoint = emoji.codePointAt(0).toString(16);
+  //     return '&#x' + codePoint.toUpperCase() + ';';
+  // }
 }
 </script>
 <style lang='scss' scoped>
