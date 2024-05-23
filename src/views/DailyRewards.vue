@@ -60,6 +60,35 @@ export default {
     }
   },
   methods: {
+    // 获取 TinyMCE 编辑器实例
+    // var editor = tinymce.get('your_editor_id');
+
+    // // 监听编辑器的输入事件
+    // editor.on('input', function() {
+    //     // 获取编辑器中的内容
+    //     var content = editor.getContent();
+
+    // 查找 emoji，并获取其 Unicode 码点
+    // var emojis = findEmojis(content)
+    // emojis.forEach(function(emoji) {
+    // var unicode = getUnicode(emoji);
+    //   console.log("Emoji: " + emoji + ", Unicode: " + unicode);
+    // });
+    // })
+    // 获取 emoji 的 Unicode 码点
+    getUnicode (emoji) {
+      // 返回 emoji 第一个字符的 Unicode 码点
+      return emoji.codePointAt(0).toString(16)
+    },
+    findEmojis (content) {
+      // 这只是一个简单的示例，你可能需要更复杂的逻辑来确保准确地找到 emoji
+      // 这里只是一个示例，用正则表达式匹配 emoji
+      const regex = /[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{1F1E0}-\u{1F1FF}]/ug
+      return content.match(regex) || []
+    },
+    unicodeToEmoji (unicode) {
+      return String.fromCodePoint('0x' + unicode)
+    },
     addDay () {
       this.memberData.signDays += 1
     },
@@ -97,6 +126,28 @@ export default {
   },
   mounted () {
     this.getTime()
+    let str = 'Start typ 😀ing : 😀slightly_😂smilr🚒ired em:📟oji tt102333🍈'
+    const ary = this.findEmojis(str)
+    const ary2 = []
+    ary.forEach(it => {
+      console.log('ary11', this.getUnicode(it))
+      ary2.push(this.getUnicode(it))
+    })
+    ary2.forEach(it => {
+      console.log('ary22', this.unicodeToEmoji(it))
+    })
+    console.log('ary', ary)
+    console.log('ary2', ary2)
+    const regex = /[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{1F1E0}-\u{1F1FF}]/ug
+    const newAry = str.match(regex)
+    // 使用 match() 方法找到字符串中的所有 emoji
+    // const emojis = str.match(/[\u{1F300}-\u{1F5FF}\u{1F600}-\u{1F64F}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{1F1E6}-\u{1F1FF}]/ug);
+    newAry.forEach(it => {
+      const strT = this.getUnicode(it)
+      str = str.replace(it, `{${strT}}`)
+    })
+    console.log('str', str)
+    console.log('newAry', newAry)
   }
 }
 </script>
